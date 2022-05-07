@@ -8,6 +8,7 @@ export const Login = () => {
         password: "",
     });
     const [error, setError] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
@@ -19,9 +20,13 @@ export const Login = () => {
         await login(formData)
     }
     useEffect(() => {
+        setIsLoading(result.isLoading)
         if (result.isError) {
             setError(result.error.data?.err)
         } else if (result.data?.data?.token?.value) {
+            localStorage.setItem("id", result.data?.data?.user?.id)
+            localStorage.setItem("first_name", result.data?.data?.user?.first_name)
+            localStorage.setItem("role", result.data?.data?.user?.role)
             localStorage.setItem("token", result.data?.data?.token?.value)
             history.push('/')
         }
@@ -37,7 +42,7 @@ export const Login = () => {
                         <input type="text" className='form-control' name='email' placeholder='Your email' onChange={handleChange} value={formData.email} required /><br />
                         <input type="password" className='form-control' name='password' placeholder='Your password' onChange={handleChange} value={formData.password} required /><br />
                         <div className='d-flex justify-content-center'>
-                            <button className='btn btn-dark w-100'>Sign in</button>
+                            <button disabled={isLoading} className='btn btn-dark w-100'>Sign in</button>
                         </div>
                         <div className='d-flex justify-content-center mt-3'>
                             <Link to="/register" className='text-center decoration-none'>Don't have an account yet? sign up</Link>

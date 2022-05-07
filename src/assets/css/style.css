@@ -14,3 +14,21 @@
 .decoration-none {
     text-decoration: none!important;
 }
+.nav-icon{
+    font-size: 22px;
+}
+.nav-icon i{
+    padding: 10px;
+    cursor: pointer;
+}
+.nav-icon i:hover {
+    color: #fff;
+    background-color: rgb(0, 89, 255);
+    border-radius: 50%;
+}
+.space-1{
+    width: 15px;
+}
+.nav-header{
+    height: 54px;
+}

@@ -10,11 +10,16 @@ import { Home } from "./pages/Home";
 function App() {
   return (
     <Provider store={store}>
-      <PrivateRoute path="/">
+
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
+      <PrivateRoute exact path="/">
         <Home />
       </PrivateRoute>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/register" component={Register}></Route>
     </Provider>
   );
 }

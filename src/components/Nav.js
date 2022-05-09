@@ -10,7 +10,7 @@ export const Nav = () => {
                 <div className='col-md-4 p-2 d-flex align-items-center justify-content-center h-100'>
                     <input type="text" className="form-control" placeholder="Search" />
                 </div>
-                <div className='col-md-3 p-2 d-flex align-items-center justify-content-center h-100 nav-icon'><i class='bx bx-user'></i><div className='space-1'></div><i class='bx bx-log-out'></i></div>
+                <div className='col-md-3 p-2 d-flex align-items-center justify-content-center h-100 nav-icon'><i className='bx bx-user'></i><div className='space-1'></div><i className='bx bx-log-out'></i></div>
             </div>
         </div >
     )

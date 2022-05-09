@@ -5,18 +5,19 @@ import './assets/css/style.css'
 import { store } from './store'
 import { Provider } from "react-redux";
 import PrivateRoute from "./PrivateRoute";
+import AuthRoute from "./AuthRoute";
 import { Home } from "./pages/Home";
 
 function App() {
   return (
     <Provider store={store}>
 
-      <Route path="/login">
+      <AuthRoute path="/login">
         <Login />
-      </Route>
-      <Route path="/register">
+      </AuthRoute>
+      <AuthRoute path="/register">
         <Register />
-      </Route>
+      </AuthRoute>
       <PrivateRoute exact path="/">
         <Home />
       </PrivateRoute>

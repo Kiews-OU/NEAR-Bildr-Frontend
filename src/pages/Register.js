@@ -25,6 +25,7 @@ export const Register = () => {
             return setError('Two passwords must be match')
         }
         setError(null)
+        setSuccess(null)
         await register(formData)
     }
     useEffect(() => {

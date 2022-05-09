@@ -18,7 +18,7 @@ export const Home = () => {
     }, [myCoursesQuery])
     useEffect(() => {
         setPublishedCourses(publishedCoursesQuery.data?.data?.courses)
-    }, [publishedCoursesQuery])
+    }, [publishedCoursesQuery, publishedCourses])
     return (
         <>
             <Nav />
@@ -27,12 +27,12 @@ export const Home = () => {
                     <section>
                         <div className='d-flex w-25 justify-content-between align-items-center'>
                             <h5 className='pop-bold mt-2'>Published Courses </h5>
-                            <button className='btn btn-primary pop'>Add Course</button>
+                            <button className='btn-sm btn-primary pop'>Add Course</button>
                         </div>
                         <div className='mt-3 pop'>
                             <div className='row'>
-                                {publishedCourses === true ? publishedCourses.map(function (item, i) {
-                                    return < div className='col-md-4 mt-3' key={i} >
+                                {publishedCourses && publishedCourses.length !== 0 ? publishedCourses.map(function (item, i) {
+                                    return < div className='col-md-4 mt-1' key={i} >
                                         <div className="card" style={{ width: "18rem" }}>
                                             <img src={"http://localhost:7000/thumbnails/" + item.thumbnail} className="card-img-top" alt="..." />
                                             <div className='p-2'>
@@ -41,8 +41,8 @@ export const Home = () => {
                                                 <span className='pop text-gray'>{moment(item.createdAt).fromNow()}</span>
                                             </div>
                                             <div className="btn-group w-100 rounded-bottom bg-dark" role="group">
-                                                <button className='btn btn-dark w-50'>Preview</button>
-                                                <button className='btn btn-warning w-50'>Edit</button>
+                                                <button className='btn-sm btn-dark w-50'>Preview</button>
+                                                <button className='btn-sm btn-dark w-50'>Edit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@ export const Home = () => {
                     </div>
                     <div className='mt-3 pop'>
                         <div className='row'>
-                            {myCourses === true ? myCourses.map(function (item, i) {
+                            {myCourses && myCourses.length !== 0 ? myCourses.map(function (item, i) {
                                 return < div className='col-md-4 mt-3' key={i} >
                                     <div className="card" style={{ width: "18rem" }}>
                                         <img src={"http://localhost:7000/thumbnails/" + item.thumbnail} className="card-img-top" alt="..." />
@@ -67,8 +67,8 @@ export const Home = () => {
                                             <span className='pop'>{item.description}</span><br />
                                             <span className='pop text-gray'>{moment(item.createdAt).fromNow()}</span>
                                         </div>
-                                        <div className="btn-group w-100 rounded-bottom bg-dark" role="group">
-                                            <button className='btn btn-dark w-50'>Preview</button>
+                                        <div className="btn-group-sm w-100 rounded-bottom bg-dark" role="group">
+                                            <button className='btn-sm btn-dark w-100'>Preview</button>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@ export const Home = () => {
                     </div>
                     <div className='pop'>
                         <div className='row'>
-                            {courses && courses.map(function (item, i) {
+                            {courses && courses.length !== 0 && courses.map(function (item, i) {
                                 return < div className='col-md-4 mt-3' key={i} >
                                     <div className="card" style={{ width: "18rem" }}>
                                         <img src={"http://localhost:7000/thumbnails/" + item.thumbnail} className="card-img-top" alt="..." />
@@ -92,8 +92,8 @@ export const Home = () => {
                                             <span className='pop'>{item.description}</span><br />
                                             <span className='pop text-gray'>{moment(item.createdAt).fromNow()}</span>
                                         </div>
-                                        <div className="btn-group w-100 rounded-bottom bg-dark" role="group">
-                                            <button className='btn btn-success w-50'>Buy</button>
+                                        <div className="btn-group-sm w-100 rounded-bottom bg-success" role="group">
+                                            <button className='btn-sm btn-success w-100'>Buy</button>
                                         </div>
                                     </div>
                                 </div>

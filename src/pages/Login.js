@@ -26,6 +26,9 @@ export const Login = () => {
         } else if (result.data?.data?.token?.value) {
             localStorage.setItem("id", result.data?.data?.user?.id)
             localStorage.setItem("first_name", result.data?.data?.user?.first_name)
+            localStorage.setItem("last_name", result.data?.data?.user?.last_name)
+            localStorage.setItem("email", result.data?.data?.user?.email)
+            localStorage.setItem("gender", result.data?.data?.user?.gender)
             localStorage.setItem("role", result.data?.data?.user?.role)
             localStorage.setItem("token", result.data?.data?.token?.value)
             window.location.reload()

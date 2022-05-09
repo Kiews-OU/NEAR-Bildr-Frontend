@@ -28,7 +28,7 @@ export const Login = () => {
             localStorage.setItem("first_name", result.data?.data?.user?.first_name)
             localStorage.setItem("role", result.data?.data?.user?.role)
             localStorage.setItem("token", result.data?.data?.token?.value)
-            history.push('/')
+            window.location.reload()
         }
     }, [result, history])
 

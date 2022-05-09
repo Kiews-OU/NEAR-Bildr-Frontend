@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useEditProfileMutation } from '../services/userService'
 
 export const Nav = () => {
+    const history = useHistory()
     const logout = async () => {
         await localStorage.removeItem("token")
         window.location.reload()
@@ -16,15 +19,28 @@ export const Nav = () => {
         role: localStorage.getItem('role'),
         gender: localStorage.getItem('gender')
     });
+    const [searchFormData, setSearchFormData] = useState({
+        search: ''
+    })
     const [isLoading, setIsLoading] = useState(false)
     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
+    const handleChangeSearch = (event) => {
+        setSearchFormData({ ...formData, [event.target.name]: event.target.value });
+    }
     const formSubmit = async (e) => {
         e.preventDefault()
         setError(null)
         setSuccess(null)
         await editProfile(formData)
+    }
+    const searchSubmit = async (e) => {
+        e.preventDefault()
+        history.push({
+            pathname: '/search-courses/' + searchFormData.search,
+            state: searchFormData.search
+        })
     }
     useEffect(() => {
         setIsLoading(result.isLoading)
@@ -87,10 +103,13 @@ export const Nav = () => {
             <div className='container-fluid shadow pop nav-header'>
                 <div className='row justify-content-between'>
                     <div className='col-md-3 p-1 d-flex align-items-center justify-content-center h-100'>
-                        <h4 className='text-center pop-bold mt-2'>Blidr</h4>
+                        <h4 className='text-center pop-bold mt-2'><Link to="/" className='normalize-link'>Blidr</Link></h4>
                     </div>
-                    <div className='col-md-4 p-2 d-flex align-items-center justify-content-center h-100'>
-                        <input type="text" className="form-control" placeholder="Search" />
+                    <div className='col-md-4 p-2 h-100'>
+                        <form onSubmit={searchSubmit} className="d-flex align-items-center justify-content-center">
+                            <input name='search' type="text" className="form-control" placeholder="Search" onChange={handleChangeSearch} value={searchFormData.search} required />
+                            <button className='btn btn-dark'>Search</button>
+                        </form>
                     </div>
                     <div className='col-md-3 p-2 d-flex align-items-center justify-content-center h-100 nav-icon'><i className='bx bx-user' data-bs-toggle="modal" data-bs-target="#editUserModal"></i><div className='space-1'></div><i onClick={logout} className='bx bx-log-out'></i></div>
                 </div>

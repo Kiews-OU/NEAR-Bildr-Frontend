@@ -35,3 +35,7 @@
 .text-gray{
     color: rgb(109, 109, 109);
 }
+.normalize-link {
+    color: black!important;
+    text-decoration: none!important;
+}

@@ -24,8 +24,11 @@ export const courseApi = createApi({
         }),
         publishedCourses: builder.query({
             query: () => 'get-my-courses-teacher'
+        }),
+        searchCourses: builder.query({
+            query: (payload) => 'search-courses/' + payload
         })
     })
 })
 
-export const { useCreateCourseMutation, useGetCoursesQuery, useMyCoursesQuery, usePublishedCoursesQuery } = courseApi
+export const { useCreateCourseMutation, useGetCoursesQuery, useMyCoursesQuery, usePublishedCoursesQuery, useSearchCoursesQuery } = courseApi

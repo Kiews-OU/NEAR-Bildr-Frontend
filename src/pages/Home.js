@@ -22,7 +22,7 @@ export const Home = () => {
     return (
         <>
             <Nav />
-            <div className='container mt-3'>
+            <div className='container mt-3 mb-3'>
                 {localStorage.getItem("role") === "teacher" ? <>
                     <section>
                         <div className='d-flex w-25 justify-content-between align-items-center'>
@@ -83,7 +83,7 @@ export const Home = () => {
                     </div>
                     <div className='pop'>
                         <div className='row'>
-                            {courses && courses.length !== 0 && courses.map(function (item, i) {
+                            {courses && courses.length !== 0 ? courses.map(function (item, i) {
                                 return < div className='col-md-4 mt-3' key={i} >
                                     <div className="card" style={{ width: "18rem" }}>
                                         <img src={"http://localhost:7000/thumbnails/" + item.thumbnail} className="card-img-top" alt="..." />
@@ -97,7 +97,7 @@ export const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                            })}
+                            }) : <h5 className='text-gray'>Sorry! No Courses Found</h5>}
 
                         </div>
                     </div>

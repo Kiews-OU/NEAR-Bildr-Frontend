@@ -56,7 +56,7 @@ export const Nav = () => {
             localStorage.setItem("email", result.data?.data?.user?.email)
             localStorage.setItem("gender", result.data?.data?.user?.gender)
             localStorage.setItem("role", result.data?.data?.user?.role)
-            setSuccess('Account created updated successfully!')
+            setSuccess('Account updated successfully!')
         }
     }, [result, error])
     return (

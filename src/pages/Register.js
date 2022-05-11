@@ -39,7 +39,7 @@ export const Register = () => {
     return (
         <div className='container mt-2'>
             <div className='row justify-content-center'>
-                <div className='col-md-4 shadow bg-white rounded mt-5 p-3'>
+                <div className='col-md-4 shadow bg-white rounded mt-2 p-3'>
                     <h4 className='text-center pop-bold'>Register</h4>
                     {success && <p className='text-success text-center pop-medium'>{success}</p>}
                     {error ? <p className='text-danger text-center pop-medium'>{error}</p> : <p className='pop text-center'>Welcome to Blidr! please fill out this form to get started</p>}
